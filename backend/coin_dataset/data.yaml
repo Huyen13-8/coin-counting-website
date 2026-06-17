@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['coin']
+
+roboflow:
+  workspace: huyns-workspace-iu52y
+  project: object-detection-tp4np
+  version: dataset
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/huyns-workspace-iu52y/object-detection-tp4np/dataset/dataset
