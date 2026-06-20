@@ -1,18 +1,19 @@
 from ultralytics import YOLO
+import gc
 
 model = YOLO("models/best.pt")
 
 
 def detect_coins(image_path):
     results = model.predict(
-        image_path,
+        source=image_path,
         conf=0.25,
-        imgsz=640,
-        verbose=False
+        imgsz=416,      # lower memory than 640
+        verbose=False,
+        device="cpu"
     )
 
     boxes = results[0].boxes
-
     detections = []
 
     for box in boxes:
@@ -27,7 +28,12 @@ def detect_coins(image_path):
             "confidence": round(confidence, 3)
         })
 
+    total = len(detections)
+
+    del results
+    gc.collect()
+
     return {
-        "totalCoins": len(detections),
+        "totalCoins": total,
         "detections": detections
     }
