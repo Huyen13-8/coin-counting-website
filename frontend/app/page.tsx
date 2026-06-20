@@ -52,7 +52,7 @@ export default function Home() {
     formData.append("file", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:8000/detect-coins", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/detect-coins`, {
         method: "POST",
         body: formData,
       });

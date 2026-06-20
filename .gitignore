@@ -11,6 +11,8 @@ backend/yolo11n.pt
 # Node
 frontend/node_modules/
 frontend/.next/
+frontend/.env
+
 
 # OS
 .DS_Store
